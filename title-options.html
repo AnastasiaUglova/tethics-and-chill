@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Options — Tethics & Chill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,500;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f3;
+      padding: 2rem 2rem 4rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    h2 {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+    }
+    h2:first-child { margin-top: 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .option {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .option-label {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaa;
+      background: #f5f5f3;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* ---- HERO TITLE OPTIONS ---- */
+    .title {
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #111;
+    }
+    .sub {
+      font-size: 2.5rem;
+      margin-top: 0.1em;
+    }
+    .chill-lora { font-family: 'Lora', Georgia, serif; font-style: italic; font-weight: 400; }
+    .chill-playfair { font-family: 'Playfair Display', Georgia, serif; font-style: italic; }
+    .chill-dm { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; }
+    .chill-cormorant { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400; }
+
+    .opt-a .sub { color: #888; }
+    .opt-b .title { -webkit-text-stroke: 2px #111; color: transparent; letter-spacing: -0.02em; }
+    .opt-b .sub { color: #111; -webkit-text-stroke: 0; }
+    .opt-c .sub { color: #555; }
+    .opt-d .title { font-weight: 900; letter-spacing: -0.04em; }
+    .opt-d .sub { font-size: 2.8rem; color: #111; margin-top: 0.05em; }
+    .opt-e .title { background: linear-gradient(135deg, #111 0%, #555 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .opt-e .sub { background: linear-gradient(135deg, #555 0%, #aaa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .opt-f .title { font-weight: 600; letter-spacing: 0.05em; }
+    .opt-f .sub { font-size: 2.8rem; color: #333; margin-top: 0.05em; }
+
+    /* ---- INLINE BRAND MARK OPTIONS ---- */
+    .brand-section {
+      margin-top: 3rem;
+    }
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .brand-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+    }
+    .brand-card .option-label {
+      background: #f5f5f3;
+    }
+    .brand-example {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: #555;
+      font-weight: 300;
+    }
+
+    /* ex/ante reference */
+    .exante { font-weight: 700; color: #111; font-size: inherit; }
+    .exante .slash { color: #6ec6d8; font-weight: 700; }
+
+    /* --- Inline brand treatments --- */
+
+    /* 1: Bold with italic chill */
+    .tc-v1 { font-weight: 600; color: #111; }
+    .tc-v1 .amp { font-family: 'Lora', serif; font-style: italic; font-weight: 400; }
+
+    /* 2: All caps TETHICS & CHILL with styled ampersand */
+    .tc-v2 { font-weight: 600; color: #111; letter-spacing: 0.04em; font-size: 0.85em; text-transform: uppercase; }
+    .tc-v2 .amp { font-family: 'Lora', serif; font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 1.15em; }
+
+    /* 3: Tethics bold, & chill in lighter weight italic */
+    .tc-v3 .tethics { font-weight: 700; color: #111; letter-spacing: -0.02em; }
+    .tc-v3 .amp-chill { font-family: 'Lora', serif; font-style: italic; font-weight: 400; color: #555; }
+
+    /* 4: Monospace-ish with a pipe separator */
+    .tc-v4 { font-weight: 600; color: #111; letter-spacing: 0.02em; }
+    .tc-v4 .pipe { color: #ccc; font-weight: 300; margin: 0 0.15em; }
+
+    /* 5: Ampersand as the star — big decorative & */
+    .tc-v5 .tethics { font-weight: 600; color: #111; }
+    .tc-v5 .amp { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: 1.2em; color: #111; }
+    .tc-v5 .chill-word { font-weight: 300; color: #555; font-style: italic; font-family: 'Lora', serif; }
+
+    /* 6: Slash style like ex/ante — Tethics/Chill */
+    .tc-v6 { font-weight: 700; color: #111; }
+    .tc-v6 .slash { font-weight: 300; color: #888; }
+
+    /* Big inline comparisons */
+    .compare-row {
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      margin: 1rem 0 0.5rem;
+      flex-wrap: wrap;
+    }
+    .compare-item {
+      font-size: 1.6rem;
+    }
+    .compare-label {
+      font-size: 0.65rem;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .vs-text {
+      font-size: 0.75rem;
+      color: #ccc;
+      font-weight: 400;
+      align-self: center;
+    }
+
+    /* RED ACCENT TESTS */
+    .red-section { margin-top: 2rem; }
+    .red-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .red-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+    }
+    .red-card .option-label { background: #f5f5f3; }
+
+    /* Soft red options */
+    .r1 { color: #c45c5c; } /* warm brick */
+    .r2 { color: #b54848; } /* classic muted red */
+    .r3 { color: #d46a5a; } /* terracotta */
+    .r4 { color: #a84040; } /* deep wine-ish */
+    .r5 { color: #c2553a; } /* burnt sienna */
+    .r6 { color: #cc6666; } /* soft rose */
+
+    .red-hero .title {
+      font-size: 4.5rem;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+    .red-hero .sub {
+      font-size: 2.8rem;
+      margin-top: 0.05em;
+      color: #111;
+    }
+
+    .tc-v3-red .tethics { font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; font-size: 0.9em; }
+    .tc-v3-red .amp-chill { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 400; color: #555; }
+
+    .context-block {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+    .context-block p {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: #555;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+    .context-block p:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+<h2>Hero Title Treatments</h2>
+<div class="grid">
+  <div class="option opt-a">
+    <span class="option-label">A — Current</span>
+    <div class="title">TETHICS</div>
+    <div class="sub chill-lora">& chill</div>
+  </div>
+  <div class="option opt-b">
+    <span class="option-label">B — Outlined</span>
+    <div class="title">TETHICS</div>
+    <div class="sub chill-lora">& chill</div>
+  </div>
+  <div class="option opt-c">
+    <span class="option-label">C — Playfair</span>
+    <div class="title">TETHICS</div>
+    <div class="sub chill-playfair">& chill</div>
+  </div>
+  <div class="option opt-d">
+    <span class="option-label">D — Cormorant</span>
+    <div class="title">TETHICS</div>
+    <div class="sub chill-cormorant">& chill</div>
+  </div>
+  <div class="option opt-e">
+    <span class="option-label">E — Gradient</span>
+    <div class="title">TETHICS</div>
+    <div class="sub chill-lora">& chill</div>
+  </div>
+  <div class="option opt-f">
+    <span class="option-label">F — Spaced + DM Serif</span>
+    <div class="title">TETHICS</div>
+    <div class="sub chill-dm">& chill</div>
+  </div>
+</div>
+
+<h2>Inline Brand Mark — how it looks in body text next to <span class="exante">ex<span class="slash">/</span>ante</span></h2>
+
+<div class="brand-grid">
+  <div class="brand-card">
+    <span class="option-label">V1 — Bold + Italic &</span>
+    <div class="compare-row">
+      <div class="compare-item">
+        <span class="compare-label">Ours</span>
+        <span class="tc-v1">Tethics <span class="amp">&</span> Chill</span>
+      </div>
+      <span class="vs-text">vs</span>
+      <div class="compare-item">
+        <span class="compare-label">Theirs</span>
+        <span class="exante">ex<span class="slash">/</span>ante</span>
+      </div>
+    </div>
+    <p class="brand-example" style="margin-top:1.2rem">Founded by Anastasia Uglova. <span class="tc-v1">Tethics <span class="amp">&</span> Chill</span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  </div>
+
+  <div class="brand-card">
+    <span class="option-label">V2 — Small Caps + Serif &</span>
+    <div class="compare-row">
+      <div class="compare-item">
+        <span class="compare-label">Ours</span>
+        <span class="tc-v2">TETHICS <span class="amp">&</span> CHILL</span>
+      </div>
+      <span class="vs-text">vs</span>
+      <div class="compare-item">
+        <span class="compare-label">Theirs</span>
+        <span class="exante">ex<span class="slash">/</span>ante</span>
+      </div>
+    </div>
+    <p class="brand-example" style="margin-top:1.2rem">Founded by Anastasia Uglova. <span class="tc-v2">TETHICS <span class="amp">&</span> CHILL</span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  </div>
+
+  <div class="brand-card">
+    <span class="option-label">V3 — Split Weight</span>
+    <div class="compare-row">
+      <div class="compare-item">
+        <span class="compare-label">Ours</span>
+        <span class="tc-v3"><span class="tethics">Tethics</span> <span class="amp-chill">& Chill</span></span>
+      </div>
+      <span class="vs-text">vs</span>
+      <div class="compare-item">
+        <span class="compare-label">Theirs</span>
+        <span class="exante">ex<span class="slash">/</span>ante</span>
+      </div>
+    </div>
+    <p class="brand-example" style="margin-top:1.2rem">Founded by Anastasia Uglova. <span class="tc-v3"><span class="tethics">Tethics</span> <span class="amp-chill">& Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  </div>
+
+  <div class="brand-card">
+    <span class="option-label">V4 — Pipe Separator</span>
+    <div class="compare-row">
+      <div class="compare-item">
+        <span class="compare-label">Ours</span>
+        <span class="tc-v4">Tethics<span class="pipe">|</span>Chill</span>
+      </div>
+      <span class="vs-text">vs</span>
+      <div class="compare-item">
+        <span class="compare-label">Theirs</span>
+        <span class="exante">ex<span class="slash">/</span>ante</span>
+      </div>
+    </div>
+    <p class="brand-example" style="margin-top:1.2rem">Founded by Anastasia Uglova. <span class="tc-v4">Tethics<span class="pipe">|</span>Chill</span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  </div>
+
+  <div class="brand-card">
+    <span class="option-label">V5 — Decorative Ampersand</span>
+    <div class="compare-row">
+      <div class="compare-item">
+        <span class="compare-label">Ours</span>
+        <span class="tc-v5"><span class="tethics">Tethics</span> <span class="amp">&</span> <span class="chill-word">Chill</span></span>
+      </div>
+      <span class="vs-text">vs</span>
+      <div class="compare-item">
+        <span class="compare-label">Theirs</span>
+        <span class="exante">ex<span class="slash">/</span>ante</span>
+      </div>
+    </div>
+    <p class="brand-example" style="margin-top:1.2rem">Founded by Anastasia Uglova. <span class="tc-v5"><span class="tethics">Tethics</span> <span class="amp">&</span> <span class="chill-word">Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  </div>
+
+  <div class="brand-card">
+    <span class="option-label">V6 — Slash (mirrors ex/ante)</span>
+    <div class="compare-row">
+      <div class="compare-item">
+        <span class="compare-label">Ours</span>
+        <span class="tc-v6">Tethics<span class="slash">/</span>Chill</span>
+      </div>
+      <span class="vs-text">vs</span>
+      <div class="compare-item">
+        <span class="compare-label">Theirs</span>
+        <span class="exante">ex<span class="slash">/</span>ante</span>
+      </div>
+    </div>
+    <p class="brand-example" style="margin-top:1.2rem">Founded by Anastasia Uglova. <span class="tc-v6">Tethics<span class="slash">/</span>Chill</span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  </div>
+</div>
+
+<h2>In context — how they'd read together on the actual site</h2>
+<div class="context-block">
+  <p style="font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#888;margin-bottom:1rem;">About</p>
+  <p style="font-size:1.4rem;font-weight:600;color:#111;line-height:1.3;margin-bottom:1rem;">We interrogate how emerging technologies shape human agency.</p>
+  <p>We convene builders around the world working on projects and technologies that promote individual consent and control over digital privacy, data, assets, and information.</p>
+  <p>We stay in touch via a Signal group &mdash; Needs & Leads for Human Agency &mdash; where we share upcoming events, agentic tech alpha, and helpful info as we grow the ecosystem.</p>
+  <p style="margin-top:0.5rem;border-top:1px solid #eee;padding-top:1rem;font-size:0.82rem;color:#888;">
+    Pick the one where our brand holds its own against theirs &darr;
+  </p>
+  <p><strong>V1:</strong> <span class="tc-v1">Tethics <span class="amp">&</span> Chill</span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+  <p><strong>V2:</strong> <span class="tc-v2">TETHICS <span class="amp">&</span> CHILL</span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+  <p><strong>V3:</strong> <span class="tc-v3"><span class="tethics">Tethics</span> <span class="amp-chill">& Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+  <p><strong>V5:</strong> <span class="tc-v5"><span class="tethics">Tethics</span> <span class="amp">&</span> <span class="chill-word">Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+</div>
+
+<h2 style="margin-top:3rem">Option D + V3 with soft red — pick your shade</h2>
+
+<div class="red-grid">
+  <div class="red-card red-hero">
+    <span class="option-label">R1 — Warm Brick</span>
+    <div class="title r1">TETHICS</div>
+    <div class="sub chill-cormorant">& chill</div>
+    <p class="brand-example" style="margin-top:1.5rem"><span class="tc-v3-red"><span class="tethics r1">TETHICS</span> <span class="amp-chill">& Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+  </div>
+  <div class="red-card red-hero">
+    <span class="option-label">R2 — Classic Muted</span>
+    <div class="title r2">TETHICS</div>
+    <div class="sub chill-cormorant">& chill</div>
+    <p class="brand-example" style="margin-top:1.5rem"><span class="tc-v3-red"><span class="tethics r2">TETHICS</span> <span class="amp-chill">& Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+  </div>
+  <div class="red-card red-hero">
+    <span class="option-label">R3 — Terracotta</span>
+    <div class="title r3">TETHICS</div>
+    <div class="sub chill-cormorant">& chill</div>
+    <p class="brand-example" style="margin-top:1.5rem"><span class="tc-v3-red"><span class="tethics r3">TETHICS</span> <span class="amp-chill">& Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+  </div>
+  <div class="red-card red-hero">
+    <span class="option-label">R4 — Deep Wine</span>
+    <div class="title r4">TETHICS</div>
+    <div class="sub chill-cormorant">& chill</div>
+    <p class="brand-example" style="margin-top:1.5rem"><span class="tc-v3-red"><span class="tethics r4">TETHICS</span> <span class="amp-chill">& Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+  </div>
+  <div class="red-card red-hero">
+    <span class="option-label">R5 — Burnt Sienna</span>
+    <div class="title r5">TETHICS</div>
+    <div class="sub chill-cormorant">& chill</div>
+    <p class="brand-example" style="margin-top:1.5rem"><span class="tc-v3-red"><span class="tethics r5">TETHICS</span> <span class="amp-chill">& Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+  </div>
+  <div class="red-card red-hero">
+    <span class="option-label">R6 — Soft Rose</span>
+    <div class="title r6">TETHICS</div>
+    <div class="sub chill-cormorant">& chill</div>
+    <p class="brand-example" style="margin-top:1.5rem"><span class="tc-v3-red"><span class="tethics r6">TETHICS</span> <span class="amp-chill">& Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders.</p>
+  </div>
+</div>
+
+<h2>In context — D + V3 with each red</h2>
+<div class="context-block">
+  <p style="font-size:1.4rem;font-weight:600;color:#111;line-height:1.3;margin-bottom:1rem;">We interrogate how emerging technologies shape human agency.</p>
+  <p><strong>R1:</strong> <span class="tc-v3-red"><span class="tethics r1">TETHICS</span> <span class="amp-chill">& Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  <p><strong>R2:</strong> <span class="tc-v3-red"><span class="tethics r2">TETHICS</span> <span class="amp-chill">& Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  <p><strong>R3:</strong> <span class="tc-v3-red"><span class="tethics r3">TETHICS</span> <span class="amp-chill">& Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  <p><strong>R4:</strong> <span class="tc-v3-red"><span class="tethics r4">TETHICS</span> <span class="amp-chill">& Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  <p><strong>R5:</strong> <span class="tc-v3-red"><span class="tethics r5">TETHICS</span> <span class="amp-chill">& Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  <p><strong>R6:</strong> <span class="tc-v3-red"><span class="tethics r6">TETHICS</span> <span class="amp-chill">& Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+</div>
+
+<h2 style="margin-top:3rem">R5 Burnt Sienna — caps vs mixed case vs lowercase</h2>
+
+<div class="red-grid">
+  <div class="red-card red-hero">
+    <span class="option-label">R5a — ALL CAPS (current)</span>
+    <div class="title r5">TETHICS</div>
+    <div class="sub chill-cormorant">& chill</div>
+    <p class="brand-example" style="margin-top:1.5rem"><span class="tc-v3-red"><span class="tethics r5">TETHICS</span> <span class="amp-chill">& Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span></p>
+  </div>
+  <div class="red-card red-hero">
+    <span class="option-label">R5b — Title Case</span>
+    <div class="title r5" style="text-transform:none;letter-spacing:-0.03em">Tethics</div>
+    <div class="sub chill-cormorant">& chill</div>
+    <p class="brand-example" style="margin-top:1.5rem"><span class="tc-v3-red"><span class="tethics r5" style="text-transform:none">Tethics</span> <span class="amp-chill">& Chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span></p>
+  </div>
+  <div class="red-card red-hero">
+    <span class="option-label">R5c — lowercase</span>
+    <div class="title r5" style="text-transform:lowercase;letter-spacing:-0.03em">tethics</div>
+    <div class="sub chill-cormorant">& chill</div>
+    <p class="brand-example" style="margin-top:1.5rem"><span class="tc-v3-red"><span class="tethics r5" style="text-transform:lowercase">tethics</span> <span class="amp-chill">& chill</span></span> partners with <span class="exante">ex<span class="slash">/</span>ante</span></p>
+  </div>
+</div>
+
+<h2>R5 in context — each casing</h2>
+<div class="context-block">
+  <p style="font-size:1.4rem;font-weight:600;color:#111;line-height:1.3;margin-bottom:1rem;">We interrogate how emerging technologies shape human agency.</p>
+  <p><strong>ALL CAPS:</strong> <span class="tc-v3-red"><span class="tethics r5">TETHICS</span> <span class="amp-chill">& Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  <p><strong>Title Case:</strong> <span class="tc-v3-red"><span class="tethics r5" style="text-transform:none">Tethics</span> <span class="amp-chill">& Chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+  <p><strong>lowercase:</strong> <span class="tc-v3-red"><span class="tethics r5" style="text-transform:lowercase">tethics</span> <span class="amp-chill">& chill</span></span>, an Agency initiative, partners with <span class="exante">ex<span class="slash">/</span>ante</span> to convene builders working on human agency.</p>
+</div>
+
+</body>
+</html>
