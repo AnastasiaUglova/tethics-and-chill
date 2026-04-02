@@ -513,6 +513,28 @@
       text-decoration-color: var(--gray-300);
       text-underline-offset: 3px;
     }
+    .agentic-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+    }
+    .agentic-link-btn {
+      display: inline-block;
+      padding: 0.65rem 1.2rem;
+      border: 1px solid rgba(194,85,58,0.25);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      text-decoration: none !important;
+      transition: all 0.15s;
+    }
+    .agentic-link-btn:hover {
+      border-color: var(--brand-red);
+      color: var(--brand-red);
+      background: rgba(194,85,58,0.04);
+    }
     .pillars {
       display: flex;
       flex-direction: column;
@@ -832,8 +854,10 @@
     <div class="agentic-grid">
       <div>
         <p>Agentic Tech is an emerging category &mdash; one that is just now defining itself. It spans cognitive security, data infrastructure, AI/ML, homomorphic encryption, decentralized tech, zero-knowledge cryptography, and other privacy-enhancing technologies.</p>
-        <p style="margin-top:0.5rem"><a href="https://buildexante.substack.com/p/tech-for-human-agency-market-map" target="_blank" style="text-decoration-color:var(--gray-300);text-underline-offset:3px">See <span class="exante-logo">ex<span class="slash">/</span>ante</span>&rsquo;s market map of the Agentic Tech landscape &rarr;</a></p>
-        <p style="margin-top:0.5rem"><a href="https://paragraph.com/@anastasiau/averting-cambridge-analytica-in-the-metaverse-identity-privacy-interoperability-agency-in-emerging-digital-worlds" target="_blank" style="text-decoration-color:var(--gray-300);text-underline-offset:3px">Read the research thesis that coined the category &rarr;</a></p>
+        <div class="agentic-links">
+          <a href="https://buildexante.substack.com/p/tech-for-human-agency-market-map" target="_blank" class="agentic-link-btn">See <span class="exante-logo">ex<span class="slash">/</span>ante</span>&rsquo;s market map of the Agentic Tech landscape &rarr;</a>
+          <a href="https://paragraph.com/@anastasiau/averting-cambridge-analytica-in-the-metaverse-identity-privacy-interoperability-agency-in-emerging-digital-worlds" target="_blank" class="agentic-link-btn">Read the research thesis that coined the category &rarr;</a>
+        </div>
       </div>
       <div class="pillars">
         <div class="pillar">
