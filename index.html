@@ -648,7 +648,7 @@
       .agentic-grid { grid-template-columns: 1fr; }
       .norms-grid { grid-template-columns: 1fr; }
       .carousel-img { height: 260px; }
-      .carousel-track { animation-duration: 10s; }
+      .carousel-track { animation: none; }
       .hero-col p, .section-body p { font-size: 1rem; }
     }
   </style>
@@ -1089,6 +1089,43 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 const carouselTrack = document.getElementById('carouselTrack');
 if (carouselTrack) {
   carouselTrack.innerHTML += carouselTrack.innerHTML;
+
+  // On mobile, use JS-driven scroll instead of CSS animation (which mobile browsers pause)
+  function isMobile() { return window.innerWidth <= 768; }
+
+  let scrollPos = 0;
+  let rafId = null;
+
+  function jsCarouselScroll() {
+    if (!isMobile()) { rafId = null; return; }
+    scrollPos += 1.5; // pixels per frame
+    const halfWidth = carouselTrack.scrollWidth / 2;
+    if (scrollPos >= halfWidth) scrollPos = 0;
+    carouselTrack.style.transform = 'translateX(-' + scrollPos + 'px)';
+    rafId = requestAnimationFrame(jsCarouselScroll);
+  }
+
+  function startJsCarousel() {
+    if (isMobile() && !rafId) {
+      carouselTrack.style.transform = 'translateX(0)';
+      scrollPos = 0;
+      jsCarouselScroll();
+    } else if (!isMobile() && rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+      carouselTrack.style.transform = '';
+    }
+  }
+
+  startJsCarousel();
+  window.addEventListener('resize', startJsCarousel);
+
+  // Restart scroll when page becomes visible again (handles tab switching)
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && isMobile() && !rafId) {
+      jsCarouselScroll();
+    }
+  });
 }
 </script>
 
