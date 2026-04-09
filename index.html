@@ -741,7 +741,7 @@
     </div>
     <div class="hero-col">
       <p>For founders, funders, policymakers, and builders working on tech &times; human agency.</p>
-      <p><a href="https://airtable.com/appAkjIABdtQNGrF9/pagN6OQWEggjAZ6I2/form" target="_blank">Apply to join</a>.</p>
+      <p><a href="https://airtable.com/appAkjIABdtQNGrF9/pagN6OQWEggjAZ6I2/form" target="_blank" class="agentic-link-btn">Apply to join &rarr;</a></p>
     </div>
   </div>
 </div>
@@ -836,10 +836,7 @@
     </div>
     <div class="events-col" id="events">
       <div class="section-label">Salons</div>
-      <div class="events-tabs">
-        <button class="events-tab active" data-period="upcoming" onclick="switchTab('upcoming')">Upcoming</button>
-        <button class="events-tab" data-period="past" onclick="switchTab('past')">Past</button>
-      </div>
+      <div class="events-tabs" id="events-tabs"></div>
       <div id="events-container"></div>
     </div>
   </div>
@@ -1050,82 +1047,71 @@ function switchTab(period) {
   renderEvents();
 }
 
+function getPastYears() {
+  const today = new Date().toISOString().substring(0, 10);
+  const years = new Set();
+  ALL_EVENTS.forEach(ev => { if (ev.date < today) years.add(ev.date.substring(0, 4)); });
+  return Array.from(years).sort((a, b) => b - a);
+}
+
+function buildTabs() {
+  const today = new Date().toISOString().substring(0, 10);
+  const hasUpcoming = ALL_EVENTS.some(ev => ev.date >= today);
+  const pastYears = getPastYears();
+  const tabs = [];
+  if (hasUpcoming) tabs.push({ period: 'upcoming', label: 'Upcoming' });
+  pastYears.forEach(y => tabs.push({ period: y, label: y }));
+  const container = document.getElementById('events-tabs');
+  container.innerHTML = tabs.map(t =>
+    '<button class="events-tab" data-period="' + t.period + '" onclick="switchTab(\'' + t.period + '\')">' + t.label + '</button>'
+  ).join('');
+}
+
 function renderEvents() {
   const now = new Date();
   const today = now.toISOString().substring(0, 10);
 
-  // Filter by tab
-  const filtered = ALL_EVENTS.filter(ev =>
-    currentTab === 'upcoming' ? ev.date >= today : ev.date < today
-  );
+  const filtered = ALL_EVENTS.filter(ev => {
+    if (currentTab === 'upcoming') return ev.date >= today;
+    // Year tab: past events in that year
+    return ev.date < today && ev.date.substring(0, 4) === currentTab;
+  });
 
   if (currentTab === 'upcoming') {
-    // Sort upcoming: soonest first
     filtered.sort((a, b) => a.date.localeCompare(b.date));
+  } else {
+    filtered.sort((a, b) => b.date.localeCompare(a.date));
   }
 
   if (!filtered.length) {
     document.getElementById('events-container').innerHTML =
-      '<div class="events-empty"><p>No ' + currentTab + ' events right now.<br>Check back soon!</p></div>';
+      '<div class="events-empty"><p>No events to show.<br>Check back soon!</p></div>';
     return;
   }
 
-  // Group by year
-  const groups = {};
-  filtered.forEach(ev => {
-    const year = ev.date.substring(0, 4);
-    if (!groups[year]) groups[year] = [];
-    groups[year].push(ev);
-  });
-
-  const years = Object.keys(groups).sort((a, b) => b - a);
+  const cardEvents = filtered.filter(e => !e.compact);
+  const compactEvents = filtered.filter(e => e.compact);
   let html = '';
-  const firstYear = years[0];
-
-  years.forEach(year => {
-    const events = groups[year];
-    const cardEvents = events.filter(e => !e.compact);
-    const compactEvents = events.filter(e => e.compact);
-    const defaultOpen = (year === firstYear);
-
-    function renderContent() {
-      let out = '';
-      if (cardEvents.length) {
-        out += '<div class="events-grid">' + cardEvents.map(renderCard).join('') + '</div>';
-      }
-      if (compactEvents.length) {
-        out += '<div style="margin-top:' + (cardEvents.length ? '0.75rem' : '0') + '">' + compactEvents.map(renderCompact).join('') + '</div>';
-      }
-      return out;
-    }
-
-    if (defaultOpen) {
-      html += '<div class="year-group">';
-      html += '<div style="font-size:0.82rem;font-weight:600;color:var(--gray-700);padding:0.5rem 0;letter-spacing:-0.01em;border-bottom:1px solid rgba(0,0,0,0.08);margin-bottom:0.75rem">' + year + ' <span style="font-weight:300;color:var(--gray-500);font-size:0.75rem">\u2014 ' + events.length + ' sessions</span></div>';
-      html += renderContent();
-      html += '</div>';
-    } else {
-      html += '<div class="year-group">';
-      html += '<button class="year-toggle" onclick="toggleYear(this)">';
-      html += '<span class="arrow">&#9654;</span> ' + year + ' <span class="year-count">\u2014 ' + events.length + ' sessions</span>';
-      html += '</button>';
-      html += '<div class="year-content">' + renderContent() + '</div></div>';
-    }
-  });
-
+  if (cardEvents.length) {
+    html += '<div class="events-grid">' + cardEvents.map(renderCard).join('') + '</div>';
+  }
+  if (compactEvents.length) {
+    html += '<div style="margin-top:' + (cardEvents.length ? '0.75rem' : '0') + '">' + compactEvents.map(renderCompact).join('') + '</div>';
+  }
   document.getElementById('events-container').innerHTML = html;
 }
 
-function toggleYear(btn) {
-  btn.classList.toggle('open');
-  btn.nextElementSibling.classList.toggle('open');
-}
-
-// Default to Upcoming if there are any upcoming events, otherwise show Past
-(function pickInitialTab() {
+// Build tabs and pick initial: Upcoming if any, else most recent past year
+(function init() {
+  buildTabs();
   const today = new Date().toISOString().substring(0, 10);
   const hasUpcoming = ALL_EVENTS.some(ev => ev.date >= today);
-  switchTab(hasUpcoming ? 'upcoming' : 'past');
+  if (hasUpcoming) {
+    switchTab('upcoming');
+  } else {
+    const years = getPastYears();
+    if (years.length) switchTab(years[0]);
+  }
 })();
 
 document.querySelectorAll('.nav-links a').forEach(a => {
