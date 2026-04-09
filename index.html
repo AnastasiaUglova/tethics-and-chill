@@ -1121,7 +1121,12 @@ function toggleYear(btn) {
   btn.nextElementSibling.classList.toggle('open');
 }
 
-switchTab('upcoming');
+// Default to Upcoming if there are any upcoming events, otherwise show Past
+(function pickInitialTab() {
+  const today = new Date().toISOString().substring(0, 10);
+  const hasUpcoming = ALL_EVENTS.some(ev => ev.date >= today);
+  switchTab(hasUpcoming ? 'upcoming' : 'past');
+})();
 
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
