@@ -793,6 +793,18 @@
     <img class="carousel-img" src="Events%20Images/DSCF0884.JPG" alt="T&C event">
   </div>
 </div>
+<script>
+  (function(){
+    var track = document.getElementById('carouselTrack');
+    if (!track) return;
+    var imgs = Array.from(track.children);
+    for (var i = imgs.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      [imgs[i], imgs[j]] = [imgs[j], imgs[i]];
+    }
+    imgs.forEach(function(img){ track.appendChild(img); });
+  })();
+</script>
 
 <hr class="divider">
 
