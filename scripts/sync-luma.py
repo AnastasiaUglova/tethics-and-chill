@@ -40,6 +40,23 @@ def fetch_ics(url: str) -> str:
     return out.decode("utf-8")
 
 
+def fetch_guest_count(slug: str) -> int | None:
+    """Scrape the public Luma event page for its guest_count."""
+    if not slug or slug.startswith("http"):
+        return None
+    try:
+        out = subprocess.check_output(
+            ["curl", "-sL", "--fail", f"https://luma.com/{slug}"],
+            timeout=20,
+        ).decode("utf-8", errors="replace")
+    except subprocess.CalledProcessError:
+        return None
+    m = re.search(r'"guest_count"\s*:\s*(\d+)', out)
+    if not m:
+        return None
+    return int(m.group(1))
+
+
 def unfold(ics: str) -> list[str]:
     """Undo RFC5545 line folding (a line continuing on the next starts with space/tab)."""
     out: list[str] = []
@@ -345,6 +362,18 @@ def main() -> int:
 
     merged, added, updated = merge(existing, incoming)
     print(f"Added {added} new events, updated {updated}")
+
+    # Scrape guest counts for any entry with a Luma slug URL
+    guest_updates = 0
+    for ev in merged:
+        url = ev.get("url") or ""
+        if not url or url.startswith("http"):
+            continue
+        count = fetch_guest_count(url)
+        if count is not None and ev.get("guests") != count:
+            ev["guests"] = count
+            guest_updates += 1
+    print(f"Updated guest counts on {guest_updates} events")
 
     new_block = render_all_events(merged)
     new_html = html[:start] + new_block + html[end:]
