@@ -206,11 +206,15 @@
     }
     .carousel-strip::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
     .carousel-strip::after { right: 0; background: linear-gradient(to left, #fff, transparent); }
+    .carousel-strip { contain: content; }
     .carousel-track {
       display: flex;
       gap: 0.75rem;
       animation: carousel-scroll 80s linear infinite;
       width: max-content;
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
     .carousel-track:hover { animation-play-state: paused; }
     .carousel-img {
@@ -221,6 +225,8 @@
       flex-shrink: 0;
       opacity: 0.8;
       transition: opacity 0.25s;
+      content-visibility: auto;
+      contain-intrinsic-size: 225px 150px;
     }
     .carousel-img:hover { opacity: 1; }
     @keyframes carousel-scroll {
@@ -766,31 +772,31 @@
 <!-- PHOTO CAROUSEL -->
 <div class="carousel-strip">
   <div class="carousel-track" id="carouselTrack">
-    <img class="carousel-img" src="Events%20Images/DSCF0620.JPG" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_002.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/tethics.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-01-24-110055_003.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/_DSCF0611.JPG" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_004.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/tethics_002.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-01-24-110055_008.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_015.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/71737942721.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/IMG_B586EEDDCBBF-1.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-01-24-110055_016.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_009.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/IMG_0799.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_012.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_017.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_014.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2025-01-15-110522.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2025-03-31-184934.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/signal-2025-12-01-171650.jpeg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/screenshot-2025-09-30.jpg" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/DSCF0825.JPG" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/DSCF0853.JPG" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/DSCF0868.JPG" alt="T&C event">
-    <img class="carousel-img" src="Events%20Images/DSCF0884.JPG" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0620.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_002.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/tethics.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-01-24-110055_003.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/_DSCF0611.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_004.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/tethics_002.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-01-24-110055_008.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_015.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/71737942721.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/IMG_B586EEDDCBBF-1.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-01-24-110055_016.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_009.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/IMG_0799.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_012.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_017.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_014.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2025-01-15-110522.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2025-03-31-184934.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2025-12-01-171650.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/screenshot-2025-09-30.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0825.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0853.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0868.jpg" alt="T&C event">
+    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0884.jpg" alt="T&C event">
   </div>
 </div>
 <script>
