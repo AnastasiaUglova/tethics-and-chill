@@ -5,41 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tethics & Chill</title>
   <meta name="description" content="A private, off-the-record, invite-only discourse club exploring tech and human agency since 2022.">
-  <meta property="og:title" content="Tethics & Chill">
-  <meta property="og:description" content="A discourse club exploring tech & human agency since 2022.">
-  <meta property="og:image" content="https://tethicsandchill.com/images/og-share.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tethicsandchill.com">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tethics & Chill">
-  <meta name="twitter:description" content="A discourse club exploring tech & human agency since 2022.">
-  <meta name="twitter:image" content="https://tethicsandchill.com/images/og-share.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,500&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500;1,600&family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --black: #111;
-      --gray-900: #222;
-      --gray-700: #555;
+      --black: #0a0a0a;
+      --gray-900: #141414;
+      --gray-800: #1c1c1c;
+      --gray-700: #aaa;
       --gray-500: #888;
-      --gray-300: #ccc;
+      --gray-400: #666;
+      --gray-300: #444;
       --gray-100: #f5f5f3;
       --white: #fff;
       --exante-blue: #6ec6d8;
+      --brand-coral: #e85d3a;
       --brand-red: #c2553a;
+      --dark-bg: #0d0d0d;
+      --section-dark: #111111;
+      --section-darker: #0a0a0a;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--black);
-      background: var(--white);
+      color: var(--white);
+      background: var(--dark-bg);
       font-size: 16px;
       -webkit-font-smoothing: antialiased;
     }
@@ -50,43 +45,16 @@
       font-weight: 400;
     }
 
-    a { color: var(--black); }
+    a { color: var(--white); }
 
-    /* ex/ante branding — light blue slash */
-    .exante-logo {
-      font-weight: 700;
-      font-size: inherit;
-      letter-spacing: -0.01em;
-      color: var(--black);
-    }
-    a .exante-logo { color: var(--black); }
-    .exante-logo .slash {
-      color: var(--exante-blue);
-      font-weight: 700;
-    }
-    /* Agentic Tech Podcast logo */
-    .atp-logo {
-      height: 1.3em;
-      vertical-align: -0.45em;
-      display: inline;
-    }
-    /* Agency (Substack) logo */
-    .agency-logo {
-      height: 0.65em;
-      vertical-align: 0.02em;
-      display: inline;
-    }
-    a:has(> .exante-logo), a:has(> .agency-logo), a:has(> .atp-logo) {
-      text-decoration: none;
-    }
+    /* ex/ante branding */
+    .exante-logo { font-weight: 700; font-size: inherit; letter-spacing: -0.01em; }
+    .exante-logo .slash { color: var(--exante-blue); font-weight: 700; }
 
     /* Tethics & Chill inline brand */
-    .tc-brand {
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
+    .tc-brand { font-weight: 600; letter-spacing: -0.01em; }
     .tc-brand .tc-amp {
-      color: var(--brand-red);
+      color: var(--brand-coral);
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
       font-weight: 600;
@@ -103,10 +71,10 @@
       top: 0;
       width: 100%;
       z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -117,11 +85,11 @@
       font-weight: 700;
       font-size: 0.95rem;
       text-decoration: none;
-      color: var(--black);
+      color: var(--white);
       letter-spacing: -0.02em;
     }
     .nav-logo .tc-amp {
-      color: var(--brand-red);
+      color: var(--brand-coral);
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
     }
@@ -138,97 +106,269 @@
     .nav-links a {
       font-size: 0.78rem;
       text-decoration: none;
-      color: var(--gray-700);
+      color: var(--gray-500);
       font-weight: 400;
       transition: color 0.15s;
     }
-    .nav-links a:hover { color: var(--black); }
+    .nav-links a:hover { color: var(--white); }
 
     /* HERO */
     .hero {
-      padding: 8rem 2.5rem 3.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark-bg);
+      padding: 2rem;
     }
+
+    /* Dark gradient overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(232,93,58,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 80%, rgba(232,93,58,0.03) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Geometric accent lines */
+    .hero-accents {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .accent-line {
+      position: absolute;
+      background: var(--brand-coral);
+      opacity: 0.25;
+    }
+    /* Horizontal line with nodes */
+    .accent-line-1 {
+      width: 180px;
+      height: 1px;
+      top: 28%;
+      left: 8%;
+      transform: rotate(-15deg);
+    }
+    .accent-line-1::before,
+    .accent-line-1::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: var(--brand-coral);
+      border-radius: 50%;
+      top: -2px;
+    }
+    .accent-line-1::before { left: 0; }
+    .accent-line-1::after { right: 0; }
+
+    .accent-line-2 {
+      width: 1px;
+      height: 120px;
+      top: 20%;
+      right: 12%;
+    }
+    .accent-line-2::before,
+    .accent-line-2::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: var(--brand-coral);
+      border-radius: 50%;
+      left: -2px;
+    }
+    .accent-line-2::before { top: 0; }
+    .accent-line-2::after { bottom: 0; }
+
+    .accent-line-3 {
+      width: 140px;
+      height: 1px;
+      bottom: 30%;
+      right: 10%;
+      transform: rotate(25deg);
+    }
+    .accent-line-3::before,
+    .accent-line-3::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--brand-coral);
+      border-radius: 50%;
+      top: -1.5px;
+    }
+    .accent-line-3::before { left: 0; }
+    .accent-line-3::after { right: 0; }
+
+    .accent-line-4 {
+      width: 1px;
+      height: 80px;
+      bottom: 25%;
+      left: 15%;
+    }
+    .accent-line-4::before {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: var(--brand-coral);
+      border-radius: 50%;
+      left: -2px;
+      bottom: 0;
+    }
+
+    /* Circuit-board corner accent */
+    .accent-corner {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: 1px solid rgba(232,93,58,0.2);
+      border-radius: 0;
+    }
+    .accent-corner-tl {
+      top: 15%;
+      left: 6%;
+      border-right: none;
+      border-bottom: none;
+    }
+    .accent-corner-tl::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: var(--brand-coral);
+      border-radius: 50%;
+      top: -2.5px;
+      left: -2.5px;
+      opacity: 0.5;
+    }
+    .accent-corner-br {
+      bottom: 20%;
+      right: 8%;
+      border-left: none;
+      border-top: none;
+    }
+    .accent-corner-br::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: var(--brand-coral);
+      border-radius: 50%;
+      bottom: -2.5px;
+      right: -2.5px;
+      opacity: 0.5;
+    }
+
     .hero-title {
-      font-size: 5rem;
+      font-size: 9rem;
       font-weight: 900;
+      font-style: italic;
       letter-spacing: -0.04em;
-      line-height: 0.95;
-      color: var(--black);
+      line-height: 0.9;
+      color: var(--brand-coral);
+      text-transform: lowercase;
     }
-    .hero-title .hero-amp {
-      color: var(--brand-red);
-    }
-    .hero-title .hero-chill {
+    .hero-subtitle {
       display: block;
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
-      font-weight: 600;
-      font-size: 3.8rem;
-      color: var(--black);
-      letter-spacing: -0.02em;
-      margin-top: 0.1em;
+      font-weight: 500;
+      font-size: 3.5rem;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      margin-top: 0.15em;
+      margin-left: 2.5rem;
     }
+    .hero-tagline {
+      margin-top: 2.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      font-weight: 400;
+    }
+    .hero-tagline .pixel-text {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.6rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+    }
+
     .hero-columns {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 2.5rem;
-      margin-top: 2.5rem;
+      margin-top: 3.5rem;
+      max-width: 900px;
+      text-align: left;
     }
     .hero-col p {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       line-height: 1.7;
-      color: var(--gray-700);
+      color: var(--gray-500);
       font-weight: 300;
       margin-bottom: 0.8rem;
     }
     .hero-col a {
-      text-decoration-color: var(--gray-300);
+      color: var(--gray-700);
+      text-decoration-color: var(--gray-400);
       text-underline-offset: 3px;
+      transition: color 0.15s;
     }
+    .hero-col a:hover { color: var(--white); }
 
     /* PHOTO CAROUSEL */
     .carousel-strip {
       width: 100%;
       overflow: hidden;
-      padding: 0.5rem 0 1.5rem;
+      padding: 1.5rem 0;
       position: relative;
+      background: var(--dark-bg);
     }
     .carousel-strip::before,
     .carousel-strip::after {
       content: '';
       position: absolute;
       top: 0; bottom: 0;
-      width: 80px;
+      width: 100px;
       z-index: 2;
       pointer-events: none;
     }
-    .carousel-strip::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
-    .carousel-strip::after { right: 0; background: linear-gradient(to left, #fff, transparent); }
-    .carousel-strip { contain: content; }
+    .carousel-strip::before { left: 0; background: linear-gradient(to right, var(--dark-bg), transparent); }
+    .carousel-strip::after { right: 0; background: linear-gradient(to left, var(--dark-bg), transparent); }
     .carousel-track {
       display: flex;
       gap: 0.75rem;
       animation: carousel-scroll 80s linear infinite;
       width: max-content;
-      will-change: transform;
-      transform: translateZ(0);
-      backface-visibility: hidden;
     }
     .carousel-track:hover { animation-play-state: paused; }
     .carousel-img {
-      height: 150px;
+      height: 140px;
       width: auto;
       border-radius: 6px;
       object-fit: cover;
       flex-shrink: 0;
-      opacity: 0.8;
-      transition: opacity 0.25s;
-      content-visibility: auto;
-      contain-intrinsic-size: 225px 150px;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+      filter: saturate(0.7);
     }
-    .carousel-img:hover { opacity: 1; }
+    .carousel-img:hover { opacity: 1; filter: saturate(1); }
     @keyframes carousel-scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -236,7 +376,7 @@
 
     .divider {
       border: none;
-      border-top: 1px solid rgba(194,85,58,0.2);
+      border-top: 1px solid rgba(232,93,58,0.15);
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -245,13 +385,13 @@
     section {
       max-width: 900px;
       margin: 0 auto;
-      padding: 4.5rem 2.5rem;
+      padding: 5rem 2.5rem;
     }
     .section-label {
       font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--gray-500);
+      letter-spacing: 0.12em;
+      color: var(--brand-coral);
       font-weight: 500;
       margin-bottom: 0.75rem;
     }
@@ -260,7 +400,7 @@
       font-size: 1.6rem;
       font-weight: 400;
       line-height: 1.35;
-      color: var(--black);
+      color: var(--white);
       letter-spacing: -0.01em;
     }
     .section-body {
@@ -272,6 +412,14 @@
       color: var(--gray-700);
       font-weight: 300;
     }
+
+    /* ABOUT */
+    .about-section {
+      background: var(--section-dark);
+    }
+    .about-section section {
+      max-width: 900px;
+    }
     .formats {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -279,31 +427,35 @@
       margin-top: 2rem;
     }
     .format {
-      border: 1px solid rgba(194,85,58,0.2);
+      border: 1px solid rgba(232,93,58,0.15);
       border-radius: 10px;
       padding: 1.5rem;
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.2s;
     }
+    .format:hover { border-color: rgba(232,93,58,0.35); }
     .format h3 {
       font-size: 0.88rem;
       font-weight: 600;
       margin-bottom: 0.6rem;
       letter-spacing: -0.01em;
+      color: var(--white);
     }
     .format p {
       font-size: 0.82rem;
       line-height: 1.65;
-      color: var(--gray-700);
+      color: var(--gray-500);
       font-weight: 300;
     }
 
     /* TIMELINE + EVENTS */
     .timeline-events-section {
-      background: var(--gray-100);
+      background: var(--section-darker);
       max-width: none;
       padding: 5rem 2.5rem;
     }
-    .timeline-events-section .section-label { color: var(--gray-500); }
-    .timeline-events-section .section-title { color: var(--black); }
+    .timeline-events-section .section-label { color: var(--brand-coral); }
+    .timeline-events-section .section-title { color: var(--white); }
     .timeline-events-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -323,7 +475,7 @@
       top: 8px;
       bottom: 8px;
       width: 1px;
-      background: rgba(194,85,58,0.2);
+      background: rgba(232,93,58,0.25);
     }
     .timeline-item {
       position: relative;
@@ -337,8 +489,9 @@
       top: 7px;
       width: 7px;
       height: 7px;
-      background: rgba(194,85,58,0.5);
+      background: var(--brand-coral);
       border-radius: 50%;
+      opacity: 0.6;
     }
     .timeline-date {
       font-size: 0.72rem;
@@ -352,27 +505,30 @@
       font-weight: 600;
       margin-bottom: 0.35rem;
       letter-spacing: -0.01em;
+      color: var(--white);
     }
     .timeline-item p {
       font-size: 0.82rem;
-      color: var(--gray-700);
+      color: var(--gray-500);
       font-weight: 300;
       line-height: 1.65;
     }
     .timeline-item a {
-      text-decoration-color: var(--gray-300);
+      color: var(--gray-700);
+      text-decoration-color: var(--gray-400);
       text-underline-offset: 3px;
+      transition: color 0.15s;
     }
+    .timeline-item a:hover { color: var(--white); }
 
     /* EVENTS */
-    .events-col { }
     .events-grid {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
     .event-card {
-      border: 1px solid rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 10px;
       overflow: hidden;
       transition: border-color 0.15s, box-shadow 0.15s;
@@ -381,11 +537,11 @@
       color: inherit;
       display: flex;
       flex-direction: row;
-      background: var(--white);
+      background: rgba(255,255,255,0.03);
     }
     .event-card:hover {
-      border-color: rgba(0,0,0,0.2);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-color: rgba(232,93,58,0.3);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
     }
     .event-cover {
       width: 120px;
@@ -406,15 +562,15 @@
     .event-date-badge { font-size: 0.72rem; font-weight: 500; color: var(--gray-500); }
     .event-location-badge {
       font-size: 0.68rem;
-      color: var(--gray-700);
-      background: rgba(0,0,0,0.04);
+      color: var(--gray-500);
+      background: rgba(255,255,255,0.06);
       padding: 0.15rem 0.5rem;
       border-radius: 100px;
     }
     .event-type-badge {
       font-size: 0.68rem;
-      color: var(--gray-700);
-      background: rgba(0,0,0,0.04);
+      color: var(--gray-500);
+      background: rgba(255,255,255,0.06);
       padding: 0.15rem 0.5rem;
       border-radius: 100px;
     }
@@ -424,6 +580,7 @@
       line-height: 1.35;
       margin-bottom: 0.4rem;
       letter-spacing: -0.01em;
+      color: var(--white);
     }
     .event-hosts { font-size: 0.78rem; color: var(--gray-500); font-weight: 300; }
     .event-guests { margin-top: 0.6rem; }
@@ -444,22 +601,22 @@
     .events-tab {
       padding: 0.4rem 1rem;
       border-radius: 100px;
-      border: 1px solid rgba(194,85,58,0.2);
+      border: 1px solid rgba(232,93,58,0.2);
       background: transparent;
-      color: var(--gray-700);
+      color: var(--gray-500);
       font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
       cursor: pointer;
       transition: all 0.15s;
     }
     .events-tab.active {
-      background: var(--black);
+      background: var(--brand-coral);
       color: var(--white);
-      border-color: var(--black);
+      border-color: var(--brand-coral);
     }
     .events-tab:hover:not(.active) {
-      border-color: var(--brand-red);
-      color: var(--brand-red);
+      border-color: var(--brand-coral);
+      color: var(--brand-coral);
     }
 
     /* YEAR GROUPS */
@@ -469,8 +626,8 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--white);
-      border: 1px solid rgba(194,85,58,0.2);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(232,93,58,0.15);
       border-radius: 8px;
       padding: 0.7rem 1rem;
       font-family: 'Inter', sans-serif;
@@ -484,8 +641,8 @@
       letter-spacing: -0.01em;
     }
     .year-toggle:hover {
-      border-color: var(--brand-red);
-      color: var(--brand-red);
+      border-color: var(--brand-coral);
+      color: var(--brand-coral);
     }
     .year-toggle .arrow {
       transition: transform 0.2s;
@@ -504,21 +661,23 @@
     }
     .year-content.open { display: block; }
 
-    /* COMPACT event items (for archive/Notion events without images) */
+    /* COMPACT event items */
     .compact-item {
       padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(0,0,0,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: 1rem;
     }
     .compact-item:last-child { border-bottom: none; }
-    .compact-item-info h4 { font-size: 0.82rem; font-weight: 500; line-height: 1.35; margin-bottom: 0.15rem; }
+    .compact-item-info h4 { font-size: 0.82rem; font-weight: 500; line-height: 1.35; margin-bottom: 0.15rem; color: var(--white); }
     .compact-item-info h4 a {
-      text-decoration-color: var(--gray-300);
+      color: var(--gray-700);
+      text-decoration-color: var(--gray-400);
       text-underline-offset: 3px;
     }
+    .compact-item-info h4 a:hover { color: var(--white); }
     .compact-item-info .compact-meta { font-size: 0.72rem; color: var(--gray-500); font-weight: 300; }
     .compact-item-date { font-size: 0.72rem; color: var(--gray-500); font-weight: 400; white-space: nowrap; flex-shrink: 0; }
 
@@ -526,6 +685,7 @@
     .agentic-section {
       max-width: none;
       padding: 5rem 2.5rem;
+      background: var(--section-dark);
     }
     .agentic-inner {
       max-width: 900px;
@@ -539,36 +699,17 @@
     }
     .agentic-grid p {
       font-size: 0.85rem;
-      color: var(--gray-700);
+      color: var(--gray-500);
       font-weight: 300;
       line-height: 1.75;
     }
     .agentic-grid a {
-      text-decoration-color: var(--gray-300);
+      color: var(--gray-700);
+      text-decoration-color: var(--gray-400);
       text-underline-offset: 3px;
+      transition: color 0.15s;
     }
-    .agentic-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1.2rem;
-    }
-    .agentic-link-btn {
-      display: inline-block;
-      padding: 0.65rem 1.2rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--brand-red);
-      background: rgba(194,85,58,0.08);
-      text-decoration: none !important;
-      transition: all 0.15s;
-      border: none;
-    }
-    .agentic-link-btn:hover {
-      background: rgba(194,85,58,0.15);
-      color: var(--brand-red);
-    }
+    .agentic-grid a:hover { color: var(--white); }
     .pillars {
       display: flex;
       flex-direction: column;
@@ -579,10 +720,11 @@
       font-weight: 600;
       margin-bottom: 0.3rem;
       letter-spacing: -0.01em;
+      color: var(--white);
     }
     .pillar p {
       font-size: 0.8rem;
-      color: var(--gray-700);
+      color: var(--gray-500);
       font-weight: 300;
       line-height: 1.6;
     }
@@ -591,6 +733,7 @@
     .norms-section {
       max-width: none;
       padding: 4.5rem 2.5rem;
+      background: var(--section-darker);
     }
     .norms-inner {
       max-width: 900px;
@@ -603,43 +746,47 @@
       margin-top: 2rem;
     }
     .norm {
-      border: 1px solid rgba(194,85,58,0.2);
+      border: 1px solid rgba(232,93,58,0.15);
       border-radius: 10px;
       padding: 1.5rem;
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.2s;
     }
+    .norm:hover { border-color: rgba(232,93,58,0.35); }
     .norm h4 {
       font-size: 0.85rem;
       font-weight: 600;
       margin-bottom: 0.4rem;
       letter-spacing: -0.01em;
+      color: var(--white);
     }
     .norm p {
       font-size: 0.82rem;
       line-height: 1.65;
-      color: var(--gray-700);
+      color: var(--gray-500);
       font-weight: 300;
     }
 
     /* JOIN */
     .join-section {
-      background: var(--black);
+      background: var(--brand-coral);
       color: var(--white);
       max-width: none;
       padding: 5rem 2.5rem;
       text-align: center;
     }
     .join-inner { max-width: 550px; margin: 0 auto; }
-    .join-section .section-label { color: var(--gray-500); }
+    .join-section .section-label { color: rgba(255,255,255,0.6); }
     .join-section .section-title { color: var(--white); }
     .join-section .section-title .tc-chill-light {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
       font-weight: 500;
-      color: #ccc;
+      color: rgba(255,255,255,0.85);
     }
     .join-section p {
       font-size: 0.95rem;
-      color: #aaa;
+      color: rgba(255,255,255,0.8);
       line-height: 1.8;
       font-weight: 300;
       margin-bottom: 2rem;
@@ -650,13 +797,13 @@
       padding: 0.7rem 1.5rem;
       border-radius: 100px;
       font-size: 0.82rem;
-      font-weight: 500;
+      font-weight: 600;
       text-decoration: none;
       transition: all 0.15s;
       background: var(--white);
-      color: var(--black);
+      color: var(--brand-coral);
     }
-    .join-btn:hover { opacity: 0.85; }
+    .join-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
     /* FOOTER */
     footer {
@@ -666,7 +813,8 @@
       align-items: center;
       font-size: 0.75rem;
       color: var(--gray-500);
-      border-top: 1px solid rgba(0,0,0,0.06);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: var(--dark-bg);
     }
 
     /* MOBILE */
@@ -674,7 +822,7 @@
       display: none;
       background: none;
       border: none;
-      color: var(--black);
+      color: var(--white);
       font-size: 1.3rem;
       cursor: pointer;
     }
@@ -686,48 +834,24 @@
         top: 100%;
         left: 0; right: 0;
         flex-direction: column;
-        background: rgba(255,255,255,0.97);
+        background: rgba(10,10,10,0.97);
         backdrop-filter: blur(10px);
         padding: 1rem 2.5rem 1.5rem;
         gap: 0.8rem;
-        border-bottom: 1px solid rgba(0,0,0,0.06);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
       }
       .nav-links.open { display: flex; }
-      .hero { padding: 7rem 1.5rem 3rem; }
-      .hero-title { font-size: 3.2rem; }
-      .hero-title .hero-chill { font-size: 2.5rem; }
-      .hero-columns { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
-      section, .norms-section { padding: 3.5rem 1.5rem; }
+      .hero { min-height: auto; padding: 8rem 1.5rem 4rem; }
+      .hero-title { font-size: 4.5rem; }
+      .hero-subtitle { font-size: 2.2rem; margin-left: 1rem; }
+      .hero-columns { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+      .about-section section, .norms-section { padding: 3.5rem 1.5rem; }
       .agentic-section, .timeline-events-section, .join-section { padding: 3.5rem 1.5rem; }
       .timeline-events-inner { grid-template-columns: 1fr; gap: 3rem; }
       .formats { grid-template-columns: 1fr; }
       .agentic-grid { grid-template-columns: 1fr; }
       .norms-grid { grid-template-columns: 1fr; }
-      .carousel-img { height: 280px; }
-      .carousel-track { animation: none; }
-      .hero-col p, .section-body p, .format p, .timeline-item p, .agentic-grid p, .pillar p, .norm p, .join-inner p { font-size: 0.95rem; }
-      /* Headings */
-      .format h3 { font-size: 1.05rem; }
-      .timeline-item h3, .event-body h3 { font-size: 1.02rem; }
-      .pillar h4, .norm h4 { font-size: 0.95rem; }
-      /* Slightly smaller card padding */
-      .format, .norm { padding: 1.1rem; }
-      /* Timeline */
-      .timeline-date { font-size: 0.82rem; }
-      /* Events text */
-      .section-label { font-size: 0.88rem; }
-      .events-tab { font-size: 0.95rem; }
-      .event-date-badge { font-size: 0.9rem; }
-      .event-location-badge { font-size: 0.88rem; }
-      .event-hosts { font-size: 0.95rem; }
-      .guest-count { font-size: 0.9rem; }
-      /* Year dropdowns & past event items */
-      .year-toggle { font-size: 1rem; }
-      .year-toggle .year-count { font-size: 0.88rem; }
-      .year-toggle .arrow { font-size: 0.75rem; }
-      .compact-item-info h4 { font-size: 1rem; }
-      .compact-item-info .compact-meta { font-size: 0.88rem; }
-      .compact-item-date { font-size: 0.88rem; }
+      .accent-line, .accent-corner { display: none; }
     }
   </style>
 </head>
@@ -743,28 +867,39 @@
     <li><a href="#events">Events</a></li>
     <li><a href="#agentic-tech">Agentic Tech</a></li>
     <li><a href="#norms">Norms</a></li>
-    <li><a href="apply.html">Join</a></li>
+    <li><a href="#join">Join</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <h1 class="hero-title">
-    tethics
-    <span class="hero-chill"><span class="hero-amp">&</span> chill</span>
-  </h1>
-  <div class="hero-columns">
-    <div class="hero-col">
-      <p>A discourse club exploring tech and human agency since 2022.</p>
-      <p>Off-the-record and invite-only to maintain trust, kindness, and signal.</p>
-    </div>
-    <div class="hero-col">
-      <p>We meet online and in-person in cities like Austin, NY, and SF.</p>
-      <p>Founded by <a href="https://anastasiauglova.com" target="_blank">Anastasia Uglova</a> and growing in partnership with <a href="https://www.buildexante.com" target="_blank"><span class="exante-logo">ex<span class="slash">/</span>ante</span></a>.</p>
-    </div>
-    <div class="hero-col">
-      <p>For founders, funders, policymakers, and builders working on tech &times; human agency.</p>
-      <p><a href="apply.html" class="agentic-link-btn">Apply to join &rarr;</a></p>
+  <div class="hero-accents">
+    <div class="accent-line accent-line-1"></div>
+    <div class="accent-line accent-line-2"></div>
+    <div class="accent-line accent-line-3"></div>
+    <div class="accent-line accent-line-4"></div>
+    <div class="accent-corner accent-corner-tl"></div>
+    <div class="accent-corner accent-corner-br"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      tethics
+      <span class="hero-subtitle">& chill</span>
+    </h1>
+    <div class="hero-tagline">an <span class="pixel-text">AGENCY</span> podcast + discourse club</div>
+    <div class="hero-columns">
+      <div class="hero-col">
+        <p>A discourse club exploring tech and human agency since 2022.</p>
+        <p>We meet online and in-person in cities like Austin, NY, and SF.</p>
+      </div>
+      <div class="hero-col">
+        <p>Off-the-record and invite-only to maintain trust, kindness, and signal.</p>
+        <p>Founded by <a href="https://anastasiauglova.com" target="_blank">Anastasia Uglova</a> and growing in partnership with <a href="https://www.buildexante.com" target="_blank"><span class="exante-logo">ex<span class="slash">/</span>ante</span></a>.</p>
+      </div>
+      <div class="hero-col">
+        <p>View our <a href="https://airtable.com/appAkjIABdtQNGrF9/shrZy4tQokHMSLQ6O/tblFzUs6slotnoz4V" target="_blank">membership directory</a>.</p>
+        <p>If you're a founder, funder, policymaker, or builder working on tech &times; human agency, <a href="https://airtable.com/appAkjIABdtQNGrF9/pagN6OQWEggjAZ6I2/form" target="_blank">apply to join</a>.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -772,49 +907,34 @@
 <!-- PHOTO CAROUSEL -->
 <div class="carousel-strip">
   <div class="carousel-track" id="carouselTrack">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0620.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_002.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/tethics.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-01-24-110055_003.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/_DSCF0611.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_004.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/tethics_002.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-01-24-110055_008.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_015.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/71737942721.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/IMG_B586EEDDCBBF-1.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-01-24-110055_016.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_009.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/IMG_0799.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_012.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_017.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2024-04-25-234222_014.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2025-01-15-110522.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2025-03-31-184934.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/signal-2025-12-01-171650.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/screenshot-2025-09-30.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0825.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0853.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0868.jpg" alt="T&C event">
-    <img class="carousel-img" loading="lazy" decoding="async" width="225" height="150" src="Events%20Images/web/DSCF0884.jpg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/DSCF0620.JPG" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_002.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/tethics.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-01-24-110055_003.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/_DSCF0611.JPG" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_004.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/tethics_002.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-01-24-110055_008.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_015.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/71737942721.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/IMG_B586EEDDCBBF-1.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-01-24-110055_016.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_009.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/IMG_0799.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_012.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_017.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2024-04-25-234222_014.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2025-01-15-110522.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2025-03-31-184934.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/signal-2025-12-01-171650.jpeg" alt="T&C event">
+    <img class="carousel-img" src="Events%20Images/screenshot-2025-09-30.jpg" alt="T&C event">
   </div>
 </div>
-<script>
-  (function(){
-    var track = document.getElementById('carouselTrack');
-    if (!track) return;
-    var imgs = Array.from(track.children);
-    for (var i = imgs.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      [imgs[i], imgs[j]] = [imgs[j], imgs[i]];
-    }
-    imgs.forEach(function(img){ track.appendChild(img); });
-  })();
-</script>
 
 <hr class="divider">
 
 <!-- ABOUT -->
+<div class="about-section">
 <section id="about">
   <div class="section-label">About</div>
   <h2 class="section-title">We interrogate how emerging technologies shape human agency.</h2>
@@ -824,7 +944,8 @@
   <div class="formats">
     <div class="format">
       <h3>In-Person Salons</h3>
-      <p>Intimate gatherings in Austin, NYC, and SF. Dinner, drinks, music, and deep conversation with an expert guest.</p>
+      <p>Intimate gatherings in Austin, NYC, and SF.</p>
+      <p>Dinner, drinks, music, and deep conversation with an expert guest.</p>
     </div>
     <div class="format">
       <h3>Online Sessions</h3>
@@ -832,11 +953,12 @@
       <p>Same depth, same trust, no geography required.</p>
     </div>
     <div class="format">
-      <h3>The <strong><span style="color:var(--brand-red);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic">&</span> <span class="chill">chill</span></strong> Part</h3>
+      <h3>The <strong><span style="color:var(--brand-coral);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic">&</span> <span class="chill">chill</span></strong> Part</h3>
       <p>We curate a fun social atmosphere because people think best when they're relaxed and among friends.</p>
     </div>
   </div>
 </section>
+</div>
 
 <!-- TIMELINE + EVENTS -->
 <div class="timeline-events-section" id="timeline">
@@ -847,18 +969,23 @@
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-date">Spring 2022</div>
-          <h3><a href="https://agentictech.substack.com/" target="_blank"><img src="images/agency-logo.png" alt="Agency" class="agency-logo"></a> Slack Channel</h3>
+          <h3>Agency Slack Channel</h3>
           <p><span class="tc-brand">tethics <span class="tc-amp">&</span> <span class="tc-chill">chill</span></span> begins as a Slack community of founders, investors, and builders discussing privacy and digital identity through the lens of Anastasia's <a href="https://ana.mirror.xyz/wTaL2MDgRNaTSFcnJormfNFHI3aCXB400G748y0SaBI" target="_blank">emerging research on agentic tech</a>.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Spring 2023</div>
+          <h3>Venture Joins the Conversation</h3>
+          <p><a href="https://www.linkedin.com/in/z-weinberg/" target="_blank">Zoe Weinberg</a> begins attending Agency firesides and leads a discussion on investing in non-extractive tech along with Brad Burnham &amp; Nick Grossman from Union Square Ventures.</p>
         </div>
         <div class="timeline-item">
           <div class="timeline-date">Summer 2023</div>
           <h3>Agentic Tech Podcast</h3>
-          <p>N&eacute;e The Privacy Podcast, Anastasia and longtime <a href="https://agentictech.substack.com/" target="_blank"><img src="images/agency-logo.png" alt="Agency" class="agency-logo"></a> Slack veteran <a href="https://chadfowler.com" target="_blank">Chad Fowler</a> interview experts for semi-monthly episodes of what would later become <a href="https://open.spotify.com/show/59dtKsdZnbq0crwohvnMBx" target="_blank"><img src="images/atp-logo.png" alt="The Agentic Tech Podcast" class="atp-logo"></a>.</p>
+          <p>N&eacute;e The Privacy Podcast, Anastasia and longtime Agency Slack veteran <a href="https://chadfowler.com" target="_blank">Chad Fowler</a> interview experts for semi-monthly episodes of what would later become <a href="https://open.spotify.com/show/59dtKsdZnbq0crwohvnMBx" target="_blank">The Agentic Tech Podcast</a>.</p>
         </div>
         <div class="timeline-item">
           <div class="timeline-date">Fall 2023</div>
-          <h3><a href="https://www.buildexante.com" target="_blank"><span class="exante-logo">ex<span class="slash">/</span>ante</span></a> Invests in Agentic Tech</h3>
-          <p><a href="https://www.linkedin.com/in/z-weinberg/" target="_blank">Zoe</a> launches the first fund investing exclusively in tech for human agency and digital freedom. <a href="https://www.buildexante.com" target="_blank"><span class="exante-logo">ex<span class="slash">/</span>ante</span></a> and <a href="https://agentictech.substack.com/" target="_blank"><img src="images/agency-logo.png" alt="Agency" class="agency-logo"></a> team up to bring <span class="tc-brand">tethics <span class="tc-amp">&</span> <span class="tc-chill">chill</span></span> to a broader audience, online, and in other cities.</p>
+          <h3><span class="exante-logo">ex<span class="slash">/</span>ante</span> Invests in Agentic Tech</h3>
+          <p>Zoe launches the first fund investing exclusively in tech for human agency.</p>
           <p style="margin-top:0.4rem">
             <a href="https://www.forbes.com/sites/alexkonrad/2023/11/02/exante-vc-firm-raises-33-million-for-agentic-tech/" target="_blank">Forbes announcement &rarr;</a>
             &nbsp;&nbsp;
@@ -866,15 +993,28 @@
           </p>
         </div>
         <div class="timeline-item">
+          <div class="timeline-date">Summer 2024</div>
+          <h3>Needs &amp; Leads for Human Agency</h3>
+          <p><span class="exante-logo">ex<span class="slash">/</span>ante</span> begins building its ecosystem, Anastasia joins as advisor, <a href="https://x.com/rossmatican" target="_blank">Ross Matican</a> cold-emails to join the crew, and ye olde Agency Slack moves into Signal as we combine forces to reach more people.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Fall 2024</div>
+          <h3><span class="tc-brand">tethics <span class="tc-amp">&</span> <span class="tc-chill">chill</span></span> Comes to NYC</h3>
+          <p>We pause in-person salons and return to our online format to build multi-city community while <span class="exante-logo">ex<span class="slash">/</span>ante</span> brings <span class="tc-brand">tethics <span class="tc-amp">&</span> <span class="tc-chill">chill</span></span> to NYC.</p>
+        </div>
+        <div class="timeline-item">
           <div class="timeline-date">Today</div>
           <h3>Expanded Cities, More Reach</h3>
-          <p>Salons open in new cities as we focus more on in-person experiences, while <a href="https://open.spotify.com/show/59dtKsdZnbq0crwohvnMBx" target="_blank"><img src="images/atp-logo.png" alt="The Agentic Tech Podcast" class="atp-logo"></a> and <a href="https://agentictech.substack.com/" target="_blank"><img src="images/agency-logo.png" alt="Agency" class="agency-logo"></a> Substack reach broader audiences.</p>
+          <p>Salons open in new cities as we focus more on in-person experiences, while <a href="https://open.spotify.com/show/59dtKsdZnbq0crwohvnMBx" target="_blank">The Agentic Tech Podcast</a> and <a href="https://agentictech.substack.com/" target="_blank">Substack</a> reach broader audiences.</p>
         </div>
       </div>
     </div>
     <div class="events-col" id="events">
       <div class="section-label">Salons</div>
-      <div class="events-tabs" id="events-tabs"></div>
+      <div class="events-tabs">
+        <button class="events-tab active" data-period="upcoming" onclick="switchTab('upcoming')">Upcoming</button>
+        <button class="events-tab" data-period="past" onclick="switchTab('past')">Past</button>
+      </div>
       <div id="events-container"></div>
     </div>
   </div>
@@ -888,10 +1028,8 @@
     <div class="agentic-grid">
       <div>
         <p>Agentic Tech is an emerging category &mdash; one that is just now defining itself. It spans cognitive security, data infrastructure, AI/ML, homomorphic encryption, decentralized tech, zero-knowledge cryptography, and other privacy-enhancing technologies.</p>
-        <div class="agentic-links">
-          <a href="https://buildexante.substack.com/p/tech-for-human-agency-market-map" target="_blank" class="agentic-link-btn">See <span class="exante-logo">ex<span class="slash">/</span>ante</span>&rsquo;s market map of the Agentic Tech landscape &rarr;</a>
-          <a href="https://paragraph.com/@anastasiau/averting-cambridge-analytica-in-the-metaverse-identity-privacy-interoperability-agency-in-emerging-digital-worlds" target="_blank" class="agentic-link-btn">Read the research thesis that coined the category &rarr;</a>
-        </div>
+        <p style="margin-top:0.5rem"><a href="https://buildexante.substack.com/p/tech-for-human-agency-market-map" target="_blank">See <span class="exante-logo">ex<span class="slash">/</span>ante</span>&rsquo;s market map of the Agentic Tech landscape &rarr;</a></p>
+        <p style="margin-top:0.5rem"><a href="https://paragraph.com/@anastasiau/averting-cambridge-analytica-in-the-metaverse-identity-privacy-interoperability-agency-in-emerging-digital-worlds" target="_blank">Read the research thesis that coined the category &rarr;</a></p>
       </div>
       <div class="pillars">
         <div class="pillar">
@@ -946,9 +1084,9 @@
 <div class="join-section" id="join">
   <div class="join-inner">
     <div class="section-label">Get Involved</div>
-    <h2 class="section-title">Want to join <span style="font-family:'Inter',sans-serif;font-weight:700;font-style:normal">tethics</span> <span style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:#c2553a">&</span> <span style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:#ccc">chill</span>?</h2>
+    <h2 class="section-title">Want to join <span style="font-family:'Inter',sans-serif;font-weight:700;font-style:normal">tethics</span> <span style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:rgba(255,255,255,0.85)">&</span> <span class="tc-chill-light">chill</span>?</h2>
     <p>We're invite-only to preserve your trust and attention span. If you're a founder, funder, policymaker, or builder working on technologies that produce human agency, we'd love to hear from you.</p>
-    <a href="apply.html" class="join-btn">Apply to Join</a>
+    <a href="https://airtable.com/appAkjIABdtQNGrF9/pagN6OQWEggjAZ6I2/form" target="_blank" class="join-btn">Apply to Join</a>
   </div>
 </div>
 
@@ -958,42 +1096,40 @@
 </footer>
 
 <script>
-// ALL events — Luma events with images, Partiful events with images, archive events text-only
+// ALL events
 const ALL_EVENTS = [
+  // 2026
+  { name: "Tethics & Chill [NYC Breakfast] Sex, Bots & Digital Autonomy w/ Ami Gan", date: "2026-04-08", location: "New York, NY", url: "7dybgau2", cover_url: "https://images.lumacdn.com/event-covers/79/7f5ff882-cfff-41ec-a9c1-eaa03de32df1.png", hosts: "Zoe Weinberg, Michka Bengio & Natalie Breitkopf", guests: 31, type: "In-Person" },
+  { name: "Tethics & Chill at The Bench [NYC Breakfast]: AGI Governance & World Models w/ Google DeepMind\u2019s Dan Altman & Bilva Chandra", date: "2026-03-11", location: "New York, NY", url: "xkfualgx", cover_url: "https://images.lumacdn.com/event-covers/iq/04b635c1-ead1-44f3-ae63-b866fabe943e.png", hosts: "Zoe Weinberg, Natalie Breitkopf & Michka Bengio", guests: 77, type: "In-Person" },
+  { name: "Tethics & Chill [Jeffersonian brunch edition]: Do Artifacts Have Politics?", date: "2026-03-01", location: "Austin, TX", url: "w00iqsxr", cover_url: "https://images.lumacdn.com/event-covers/n9/58ab2714-0138-4543-aefb-960f88a19573.png", hosts: "Anastasia Uglova, Ross Matican & Zoe Weinberg", guests: 14, type: "In-Person" },
 
-  // ——— 2026 ———
-  { name: "Tethics & Chill [NYC Breakfast] Sex, Bots & Digital Autonomy w/ Ami Gan (Former CEO of OnlyFans and Co-founder of Vylit)", date: "2026-04-08", location: "New York, NY", url: "7dybgau2", cover_url: "https://images.lumacdn.com/event-covers/79/7f5ff882-cfff-41ec-a9c1-eaa03de32df1.png", hosts: "Zoe Weinberg, Michka Bengio & Natalie Breitkopf", guests: 91, type: "In-Person" },
-  { name: "Tethics & Chill at The Bench [NYC Breakfast]: AGI Governance & World Models w/ Google DeepMind’s Dan Altman & Bilva Chandra", date: "2026-03-11", location: "New York, NY", url: "xkfualgx", cover_url: "https://images.lumacdn.com/event-covers/iq/04b635c1-ead1-44f3-ae63-b866fabe943e.png", hosts: "Zoe Weinberg, Natalie Breitkopf & Michka Bengio", guests: 77, type: "In-Person" },
-  { name: "Tethics & Chilll [Jeffersonian brunch edition]: Do Artifacts Have Politics?", date: "2026-03-01", location: "Austin, TX", url: "w00iqsxr", cover_url: "https://images.lumacdn.com/event-covers/n9/58ab2714-0138-4543-aefb-960f88a19573.png", hosts: "Anastasia Uglova, Ross Matican & Zoe Weinberg", guests: 14, type: "In-Person" },
-
-  // ——— 2025 ———
-  { name: "Tethics & Chill [online]: Possibilities for the Open Web w/ Mozilla Foundation's Nabiha Syed", date: "2025-12-17", location: "Online", url: "lglqlumc", cover_url: "https://images.lumacdn.com/event-covers/mu/2d46a006-0282-4840-b5e6-e3d0428cba66.jpg", hosts: "Anastasia Uglova & Natalie Breitkopf", guests: 41, type: "Online Fireside" },
+  // 2025
+  { name: "Tethics & Chill [online]: Possibilities for the Open Web w/ Mozilla Foundation\u2019s Nabiha Syed", date: "2025-12-17", location: "Online", url: "lglqlumc", cover_url: "https://images.lumacdn.com/event-covers/mu/2d46a006-0282-4840-b5e6-e3d0428cba66.jpg", hosts: "Anastasia Uglova & Natalie Breitkopf", guests: 41, type: "Online Fireside" },
   { name: "Tethics & Chill [NYC Breakfast]: Alignment & Collective Intelligence with Ivan Vendrov (Midjourney, Anthropic)", date: "2025-12-01", location: "New York, NY", url: "skm8t7pl", cover_url: "https://images.lumacdn.com/event-covers/rp/382ccc4c-e160-4c6e-8f38-11ee299fb02a.jpg", hosts: "Zoe Weinberg & Matt Hawes", guests: 59, type: "In-Person" },
-  { name: "Tethics & Chill [online]:  After America's AI Action Plan w/  former Senior White House Policy Advisor Dean Ball", date: "2025-11-20", location: "Online", url: "lfvzalws", cover_url: "https://images.lumacdn.com/event-covers/91/3dd0828d-4721-4141-ab9c-bd826d5f4133.jpg", hosts: "Anastasia Uglova & Dean Ball", guests: 39, type: "Online Fireside" },
+  { name: "Tethics & Chill [online]: After America\u2019s AI Action Plan w/ former Senior White House Policy Advisor Dean Ball", date: "2025-11-20", location: "Online", url: "lfvzalws", cover_url: "https://images.lumacdn.com/event-covers/91/3dd0828d-4721-4141-ab9c-bd826d5f4133.jpg", hosts: "Anastasia Uglova & Dean Ball", guests: 39, type: "Online Fireside" },
   { name: "Tethics & Chill: Do Chatbots Dream of Bioweapons?", date: "2025-10-14", location: "Austin, TX", url: "9urua01n", cover_url: "https://images.lumacdn.com/event-covers/w5/b1aea17a-f5bc-4267-84a2-266dffb98e9b.webp", hosts: "Anastasia Uglova, Daniel Walker & Sunishchal Dev", guests: 28, type: "In-Person" },
   { name: "Tethics & Chill [online]: AMA w/ Andrew Mayne, first OpenAI prompt engineer and OpenAI Podcast host", date: "2025-09-15", location: "Online", url: "czrfwe4f", cover_url: "https://images.lumacdn.com/event-covers/jk/6717d4d4-4f9b-461a-b3d3-e0272b399ab4.webp", hosts: "Anastasia Uglova & Andrew Mayne", guests: 50, type: "Online Fireside" },
   { name: "Tethics & Chill [online]: Inside the Guardrails: Building the Future of AI Governance", date: "2025-06-09", location: "Online", url: "e7qpthel", cover_url: "https://images.lumacdn.com/event-covers/8q/aaea0b11-00fb-4d4e-b757-9d0309c6f8b1.png", hosts: "Ross Matican", guests: 46, type: "Online Fireside" },
-  { name: "Tethics & Chill [online]: Truth, Lies, and the Influence Machine w/ Renée DiResta", date: "2025-05-08", location: "Online", url: "rrdj27df", cover_url: "https://images.lumacdn.com/event-covers/3i/400444ad-1ea6-47da-829a-e772caddd523.png", hosts: "Ross Matican, Vivian Chong & Anastasia Uglova", guests: 50, type: "Online Fireside" },
+  { name: "Tethics & Chill [online]: Truth, Lies, and the Influence Machine w/ Ren\u00e9e DiResta", date: "2025-05-08", location: "Online", url: "rrdj27df", cover_url: "https://images.lumacdn.com/event-covers/3i/400444ad-1ea6-47da-829a-e772caddd523.png", hosts: "Ross Matican, Vivian Chong & Anastasia Uglova", guests: 50, type: "Online Fireside" },
   { name: "Tethics & Chill [online]: Decentralizing Reputation in a Networked World", date: "2025-04-28", location: "Online", url: "ql43rmqb", cover_url: "https://images.lumacdn.com/event-covers/4d/4c2e5479-8ace-410b-a2b4-d9c2d134fb9e.png", hosts: "Ross Matican & Anastasia Uglova", guests: 48, type: "Online Fireside" },
   { name: "Autonomy in the Automation Age w/ Brendan McCord & Luke Drago", date: "2025-03-31", location: "Austin, TX", url: "eryan73d", cover_url: "https://images.lumacdn.com/event-covers/22/04ecdbb4-eb06-4eb2-9cb6-5d4890067064.png", hosts: "Anastasia Uglova, Brendan McCord, Luke Drago & Will Linn", guests: 61, type: "In-Person" },
-  { name: "Tethics & Chill [online]: Yellow-Teaming 101—Threat Modeling for Externalities w/ Arm's Zach Lasiuk", date: "2025-03-03", location: "Online", url: "f3dv5uuy", cover_url: "https://images.lumacdn.com/event-covers/58/e0e5ce83-8ce3-4dac-a38b-e04e06189315.webp", hosts: "Anastasia Uglova", guests: 37, type: "Online Fireside" },
-  { name: "Tethics & Chill [online]: OSINT, Mis- & Disinfo, and Privacy w/ ProAlign's Erin Beffa & BlueYard's Chad Fowler", date: "2025-02-20", location: "Online", url: "lbvz236n", cover_url: "https://images.lumacdn.com/event-covers/58/e0e5ce83-8ce3-4dac-a38b-e04e06189315.webp", hosts: "Anastasia Uglova", guests: 30, type: "Online Fireside" },
-  { name: "Tethics & Chill [online]: Governance for Good w/ Network Goods' Connor McCormick & BlueYard Capital's Chad Fowler", date: "2025-01-27", location: "Online", url: "pg84yshd", cover_url: "https://images.lumacdn.com/event-covers/29/610e8941-c244-4ab8-892f-500fdb5da93c", hosts: "Anastasia Uglova", guests: 50, type: "Online Fireside" },
-  { name: "Tethics & Chill [NYC Breakfast]: Leveraging AI for democracy w/ NYU's Zeve Sanderson and Jigsaw's Beth Goldberg", date: "2025-01-15", location: "New York, NY", url: "m121kr8t", cover_url: "https://images.lumacdn.com/event-covers/wn/6d4b55a8-a41d-47ab-a1bc-87a2d12a40e3", hosts: "Zoe Weinberg", guests: 37, type: "In-Person" },
-  { name: "Tethics & Chill [online]: Agency in a Datafied World w/ koodos labs' Jad Esber and Dr. John Deighton (HBS), moderated by Leora Kornfeld", date: "2025-01-13", location: "Online", url: "uv571w9f", cover_url: "https://images.lumacdn.com/event-covers/6f/37a56901-37c8-4d97-9752-b49a712622cc", hosts: "Anastasia Uglova", guests: 74, type: "Online Fireside" },
+  { name: "Tethics & Chill [online]: Yellow-Teaming 101 \u2014 Threat Modeling for Externalities w/ Arm\u2019s Zach Lasiuk", date: "2025-03-03", location: "Online", url: "f3dv5uuy", cover_url: "https://images.lumacdn.com/event-covers/58/e0e5ce83-8ce3-4dac-a38b-e04e06189315.webp", hosts: "Anastasia Uglova", type: "Online Fireside" },
+  { name: "Tethics & Chill [online]: OSINT, Mis- & Disinfo, and Privacy w/ ProAlign\u2019s Erin Beffa", date: "2025-02-20", location: "Online", url: "lbvz236n", cover_url: "https://images.lumacdn.com/event-covers/58/e0e5ce83-8ce3-4dac-a38b-e04e06189315.webp", hosts: "Anastasia Uglova", type: "Online Fireside" },
+  { name: "Tethics & Chill [online]: Governance for Good w/ Network Goods\u2019 Connor McCormick & BlueYard Capital\u2019s Chad Fowler", date: "2025-01-27", location: "Online", url: "pg84yshd", cover_url: "https://images.lumacdn.com/event-covers/29/610e8941-c244-4ab8-892f-500fdb5da93c", hosts: "Anastasia Uglova", type: "Online Fireside" },
+  { name: "Tethics & Chill [NYC]: Leveraging AI for Democracy w/ NYU\u2019s Zeve Sanderson and Jigsaw\u2019s Beth Goldberg", date: "2025-01-15", location: "New York, NY", url: "m121kr8t", cover_url: "https://images.lumacdn.com/event-covers/wn/6d4b55a8-a41d-47ab-a1bc-87a2d12a40e3", hosts: "Zoe Weinberg", type: "In-Person" },
+  { name: "Tethics & Chill [online]: Agency in a Datafied World w/ Jad Esber", date: "2025-01-13", location: "Online", url: "uv571w9f", cover_url: "https://images.lumacdn.com/event-covers/6f/37a56901-37c8-4d97-9752-b49a712622cc", hosts: "Anastasia Uglova", type: "Online Fireside" },
 
-  // ——— 2024 ———
-  { name: "Tethics & Chill [online]: Privacy So Good, You'll Forget It's There, w/Privy's Henri Stern", date: "2024-12-16", location: "Online", url: "v5cjzqyj", cover_url: "https://images.lumacdn.com/event-covers/mh/a2ae734b-f308-45a5-b40a-560a47966c63", hosts: "Anastasia Uglova", guests: 49, type: "Online Fireside" },
-  { name: "Tethics & Chill [NYC Breakfast]: Trust, Technology, and Human Rights w/ WITNESS' Sam Gregory", date: "2024-12-11", location: "New York, NY", url: "dzmhhcll", cover_url: "https://images.lumacdn.com/event-covers/xs/92a7916a-b31d-4cc4-993b-ed1bd191c989", hosts: "Zoe Weinberg", guests: 33, type: "In-Person" },
+  // 2024 (Luma + Partiful)
+  { name: "Tethics & Chill [online]: Privacy So Good, You\u2019ll Forget It\u2019s There w/ Privy\u2019s Henri Stern", date: "2024-12-16", location: "Online", url: "v5cjzqyj", cover_url: "https://images.lumacdn.com/event-covers/mh/a2ae734b-f308-45a5-b40a-560a47966c63", hosts: "Anastasia Uglova", type: "Online Fireside" },
+  { name: "Tethics & Chill [NYC Breakfast]: Trust, Technology, and Human Rights w/ WITNESS\u2019 Sam Gregory", date: "2024-12-11", location: "New York, NY", url: "dzmhhcll", cover_url: "https://images.lumacdn.com/event-covers/xs/92a7916a-b31d-4cc4-993b-ed1bd191c989", hosts: "Zoe Weinberg", type: "In-Person" },
   { name: "Tethics & Chill 9: An Agentic Tech Primer", date: "2024-10-28", location: "Online", url: "https://partiful.com/e/bYfTO3WWYY3RnavJaVUK", cover_url: "images/agentic-tech-primer.jpg", hosts: "Anastasia Uglova, Zoe Weinberg & Chad Fowler", type: "Online Fireside" },
-  { name: "Tethics & Chill [online]: An Agentic Tech Primer", date: "2024-10-28", location: "Online", url: "yqabf8ef", guests: 69, type: "Online Fireside" },
-  { name: "Biosecurity w/ MIT’s Kevin Esvelt", date: "2024-05-07", location: "Austin, TX", url: "https://partiful.com/e/Y2fQRhzqrSmXCfw3xSOw", cover_url: "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/user%2FDdI9EaTsoWcnaFG7quMNHg3NPqh2%2F31rmModZLAKaVFPHVOboL?alt=media&token=a8336149-8508-4c06-a083-ab46b2b02741", hosts: "Anastasia Uglova", type: "In-Person" },
+  { name: "Biosecurity w/ MIT\u2019s Kevin Esvelt", date: "2024-05-07", location: "Austin, TX", url: "https://partiful.com/e/Y2fQRhzqrSmXCfw3xSOw", cover_url: "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/user%2FDdI9EaTsoWcnaFG7quMNHg3NPqh2%2F31rmModZLAKaVFPHVOboL?alt=media&token=a8336149-8508-4c06-a083-ab46b2b02741", hosts: "Anastasia Uglova", type: "In-Person" },
   { name: "Tethics & Chill 7: Agentic Tech", date: "2024-04-25", location: "Austin, TX", url: "https://partiful.com/e/gzkFE9yKCEwHUF3HhIVQ", cover_url: "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/user%2FqkcgbqLfBWOKRYXuppagt2brELk1%2FpDrhoDsKF9TAAdE-kupbf?alt=media&token=f095acf4-c5f3-4627-b886-106c660783e1", hosts: "Anastasia Uglova & Zoe Weinberg", type: "In-Person" },
 
-  // ——— 2023 ———
+  // 2023
   { name: "Angels & Demons: A Participatory Halloween Edition", date: "2023-10-17", location: "Austin, TX", url: "https://partiful.com/e/7VsLyvF4oc74LfGvcoQa", cover_url: "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/user%2FqkcgbqLfBWOKRYXuppagt2brELk1%2FjTPY3ny7xLGKMcdXmgHu6?alt=media&token=ca45e667-a7fe-4d30-91ec-0eb7a87c7a8f", hosts: "Anastasia Uglova", type: "In-Person" },
-  { name: "Neurotech & Cognitive Consent w/ Duke Law’s Nita Farahany", date: "2023-09-25", location: "Austin, TX", url: "https://partiful.com/e/uYZaitdRxPTmmKmiy921", cover_url: "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/user%2FqkcgbqLfBWOKRYXuppagt2brELk1%2FHxt5aFY9Tx5q-O0_3-F15?alt=media&token=6b2c59d4-7ba1-40c1-bce1-a76b1e698c08", hosts: "Anastasia Uglova", type: "In-Person" },
-  { name: "How Surveillance Leads to Control: The Handmaid’s Tale", date: "2023-09-19", location: "Online", hosts: "Michelle Lai", type: "Online Fireside", compact: true },
+  { name: "Neurotech & Cognitive Consent w/ Duke Law\u2019s Nita Farahany", date: "2023-09-25", location: "Austin, TX", url: "https://partiful.com/e/uYZaitdRxPTmmKmiy921", cover_url: "https://firebasestorage.googleapis.com/v0/b/getpartiful.appspot.com/o/user%2FqkcgbqLfBWOKRYXuppagt2brELk1%2FHxt5aFY9Tx5q-O0_3-F15?alt=media&token=6b2c59d4-7ba1-40c1-bce1-a76b1e698c08", hosts: "Anastasia Uglova", type: "In-Person" },
+  { name: "How Surveillance Leads to Control: The Handmaid\u2019s Tale", date: "2023-09-19", location: "Online", hosts: "Michelle Lai", type: "Online Fireside", compact: true },
   { name: "Poolside Story: Tethics Takes an Austin Summer Chill Pill", date: "2023-08-05", location: "Austin, TX", url: "https://partiful.com/e/1CWXvvdIkNkSnncaXOl9", cover_url: "https://media1.giphy.com/media/11TCk8PvUJhdy8/giphy.gif", hosts: "Anastasia Uglova", type: "In-Person" },
   { name: "Mental Health, Intimacy & Sex Robots", date: "2023-06-27", location: "Austin, TX", url: "https://partiful.com/e/UwQIMb6uQbuaBp5oJGCX", cover_url: "https://media0.giphy.com/media/1n92hYPiFQ0efcCtrF/giphy.gif", hosts: "Rocio Pelayo (Reimagine Sexuality)", type: "In-Person" },
   { name: "A Whirlwind Tour of Privacy, AI & Crypto Regs", date: "2023-06-13", location: "Online", hosts: "Ahmed Ghappour (NYM)", type: "Online Fireside", compact: true },
@@ -1007,7 +1143,7 @@ const ALL_EVENTS = [
   { name: "Better Coordination Systems for Humanity", date: "2023-02-08", location: "Online", hosts: "Evan Miyazono (Protocol Labs)", type: "Online Fireside", compact: true },
   { name: "Programmable Privacy", date: "2023-01-24", location: "Online", hosts: "David Sneider (Lit Protocol)", type: "Online Fireside", compact: true },
 
-  // ——— 2022 ———
+  // 2022
   { name: "Privacy + Constitution DAO", date: "2022-11-09", location: "Online", hosts: "Matthew Wyatt (ConstitutionDAO)", type: "Online", compact: true },
   { name: "Are We Post-Privacy? Hot Takes on Surveillance", date: "2022-10-26", location: "Online", hosts: "B Cavello & Louis Barclay (Aspen Institute, Berkman Klein)", type: "Online", compact: true },
   { name: "Designing ZK Public Goods", date: "2022-09-29", location: "Online", hosts: "Rachel Aux (Ethereum Foundation)", type: "Online Fireside", compact: true },
@@ -1087,72 +1223,75 @@ function switchTab(period) {
   renderEvents();
 }
 
-function getPastYears() {
-  const today = new Date().toISOString().substring(0, 10);
-  const years = new Set();
-  ALL_EVENTS.forEach(ev => { if (ev.date < today) years.add(ev.date.substring(0, 4)); });
-  return Array.from(years).sort((a, b) => b - a);
-}
-
-function buildTabs() {
-  const today = new Date().toISOString().substring(0, 10);
-  const hasUpcoming = ALL_EVENTS.some(ev => ev.date >= today);
-  const pastYears = getPastYears();
-  const tabs = [];
-  if (hasUpcoming) tabs.push({ period: 'upcoming', label: 'Upcoming' });
-  pastYears.forEach(y => tabs.push({ period: y, label: y }));
-  const container = document.getElementById('events-tabs');
-  container.innerHTML = tabs.map(t =>
-    '<button class="events-tab" data-period="' + t.period + '" onclick="switchTab(\'' + t.period + '\')">' + t.label + '</button>'
-  ).join('');
-}
-
 function renderEvents() {
   const now = new Date();
   const today = now.toISOString().substring(0, 10);
 
-  const filtered = ALL_EVENTS.filter(ev => {
-    if (currentTab === 'upcoming') return ev.date >= today;
-    // Year tab: past events in that year
-    return ev.date < today && ev.date.substring(0, 4) === currentTab;
-  });
+  const filtered = ALL_EVENTS.filter(ev =>
+    currentTab === 'upcoming' ? ev.date >= today : ev.date < today
+  );
 
   if (currentTab === 'upcoming') {
     filtered.sort((a, b) => a.date.localeCompare(b.date));
-  } else {
-    filtered.sort((a, b) => b.date.localeCompare(a.date));
   }
 
   if (!filtered.length) {
     document.getElementById('events-container').innerHTML =
-      '<div class="events-empty"><p>No events to show.<br>Check back soon!</p></div>';
+      '<div class="events-empty"><p>No ' + currentTab + ' events right now.<br>Check back soon!</p></div>';
     return;
   }
 
-  const cardEvents = filtered.filter(e => !e.compact);
-  const compactEvents = filtered.filter(e => e.compact);
+  const groups = {};
+  filtered.forEach(ev => {
+    const year = ev.date.substring(0, 4);
+    if (!groups[year]) groups[year] = [];
+    groups[year].push(ev);
+  });
+
+  const years = Object.keys(groups).sort((a, b) => b - a);
   let html = '';
-  if (cardEvents.length) {
-    html += '<div class="events-grid">' + cardEvents.map(renderCard).join('') + '</div>';
-  }
-  if (compactEvents.length) {
-    html += '<div style="margin-top:' + (cardEvents.length ? '0.75rem' : '0') + '">' + compactEvents.map(renderCompact).join('') + '</div>';
-  }
+  const firstYear = years[0];
+
+  years.forEach(year => {
+    const events = groups[year];
+    const cardEvents = events.filter(e => !e.compact);
+    const compactEvents = events.filter(e => e.compact);
+    const defaultOpen = (year === firstYear);
+
+    function renderContent() {
+      let out = '';
+      if (cardEvents.length) {
+        out += '<div class="events-grid">' + cardEvents.map(renderCard).join('') + '</div>';
+      }
+      if (compactEvents.length) {
+        out += '<div style="margin-top:' + (cardEvents.length ? '0.75rem' : '0') + '">' + compactEvents.map(renderCompact).join('') + '</div>';
+      }
+      return out;
+    }
+
+    if (defaultOpen) {
+      html += '<div class="year-group">';
+      html += '<div style="font-size:0.82rem;font-weight:600;color:var(--gray-700);padding:0.5rem 0;letter-spacing:-0.01em;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:0.75rem">' + year + ' <span style="font-weight:300;color:var(--gray-500);font-size:0.75rem">\u2014 ' + events.length + ' sessions</span></div>';
+      html += renderContent();
+      html += '</div>';
+    } else {
+      html += '<div class="year-group">';
+      html += '<button class="year-toggle" onclick="toggleYear(this)">';
+      html += '<span class="arrow">&#9654;</span> ' + year + ' <span class="year-count">\u2014 ' + events.length + ' sessions</span>';
+      html += '</button>';
+      html += '<div class="year-content">' + renderContent() + '</div></div>';
+    }
+  });
+
   document.getElementById('events-container').innerHTML = html;
 }
 
-// Build tabs and pick initial: Upcoming if any, else most recent past year
-(function init() {
-  buildTabs();
-  const today = new Date().toISOString().substring(0, 10);
-  const hasUpcoming = ALL_EVENTS.some(ev => ev.date >= today);
-  if (hasUpcoming) {
-    switchTab('upcoming');
-  } else {
-    const years = getPastYears();
-    if (years.length) switchTab(years[0]);
-  }
-})();
+function toggleYear(btn) {
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+
+switchTab('upcoming');
 
 document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
@@ -1162,43 +1301,6 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 const carouselTrack = document.getElementById('carouselTrack');
 if (carouselTrack) {
   carouselTrack.innerHTML += carouselTrack.innerHTML;
-
-  // On mobile, use JS-driven scroll instead of CSS animation (which mobile browsers pause)
-  function isMobile() { return window.innerWidth <= 768; }
-
-  let scrollPos = 0;
-  let rafId = null;
-
-  function jsCarouselScroll() {
-    if (!isMobile()) { rafId = null; return; }
-    scrollPos += 1.5; // pixels per frame
-    const halfWidth = carouselTrack.scrollWidth / 2;
-    if (scrollPos >= halfWidth) scrollPos = 0;
-    carouselTrack.style.transform = 'translateX(-' + scrollPos + 'px)';
-    rafId = requestAnimationFrame(jsCarouselScroll);
-  }
-
-  function startJsCarousel() {
-    if (isMobile() && !rafId) {
-      carouselTrack.style.transform = 'translateX(0)';
-      scrollPos = 0;
-      jsCarouselScroll();
-    } else if (!isMobile() && rafId) {
-      cancelAnimationFrame(rafId);
-      rafId = null;
-      carouselTrack.style.transform = '';
-    }
-  }
-
-  startJsCarousel();
-  window.addEventListener('resize', startJsCarousel);
-
-  // Restart scroll when page becomes visible again (handles tab switching)
-  document.addEventListener('visibilitychange', function() {
-    if (!document.hidden && isMobile() && !rafId) {
-      jsCarouselScroll();
-    }
-  });
 }
 </script>
 
